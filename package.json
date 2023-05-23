@@ -1,0 +1,58 @@
+{
+  "name": "@nethserver/vue-tailwind-lib",
+  "private": false,
+  "version": "0.0.4",
+  "keywords": [
+    "nethserver",
+    "nethesis",
+    "vuejs",
+    "vue",
+    "tailwind"
+  ],
+  "homepage": "https://github.com/NethServer/vue-tailwind-lib#readme",
+  "bugs": "https://github.com/NethServer/dev/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NethServer/vue-tailwind-lib.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-tailwind-lib.umd.js",
+  "module": "./dist/vue-tailwind-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-tailwind-lib.es.js",
+      "types": "./dist/main.d.ts",
+      "require": "./dist/vue-tailwind-lib.umd.js"
+    },
+    "./dist/vue-tailwind-lib.css": {
+      "import": "./dist/vue-tailwind-lib.css",
+      "require": "./dist/vue-tailwind-lib.css"
+    }
+  },
+  "types": "./dist/main.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "path": "^0.12.7",
+    "prettier": "2.8.8",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0",
+    "vue-tsc": "^1.4.2"
+  }
+}
