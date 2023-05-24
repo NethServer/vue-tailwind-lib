@@ -10,7 +10,7 @@ const meta = {
   component: NeTitle,
   tags: ['autodocs'],
   argTypes: {
-    level: { control: 'inline-radio', options: ['h1', 'h2'] }
+    level: { control: 'inline-radio', options: ['h1', 'h2', 'h3'] }
   },
   args: { level: 'h1' } // default values
 } satisfies Meta<typeof NeTitle>
@@ -18,9 +18,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const template =
-  '<NeTitle v-bind="args">Your sample title</NeTitle>\
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
+const template = '<NeTitle v-bind="args">Your sample title</NeTitle>'
 
 export const Level1: Story = {
   render: (args) => ({
@@ -58,5 +56,22 @@ export const Level3: Story = {
   }),
   args: {
     level: 'h3'
+  }
+}
+
+const templateWithParagraph =
+  '<NeTitle v-bind="args">Your sample title</NeTitle>\
+<p class="text-gray-900 dark:text-gray-100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
+
+export const Level1WithParagraph: Story = {
+  render: (args) => ({
+    components: { NeTitle },
+    setup() {
+      return { args }
+    },
+    template: templateWithParagraph
+  }),
+  args: {
+    level: 'h1'
   }
 }

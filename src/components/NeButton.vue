@@ -34,9 +34,9 @@ const kindStyle: { [index: string]: string } = {
   primary:
     'shadow-sm bg-primary-700 text-white hover:bg-primary-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-300 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600',
   secondary:
-    'shadow-sm ring-1 ring-inset text-primary-700 ring-gray-300 hover:bg-gray-200/30 hover:text-primary-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:text-primary-500 dark:ring-gray-200 dark:hover:bg-gray-600/30 dark:hover:text-primary-500 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600',
+    'shadow-sm ring-1 ring-inset text-primary-700 ring-gray-300 hover:bg-gray-200/70 hover:text-primary-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:text-primary-500 dark:ring-gray-200 dark:hover:bg-gray-600/30 dark:hover:text-primary-500 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600',
   tertiary:
-    'text-primary-700 hover:text-primary-800 hover:bg-gray-200/30 dark:text-primary-500 dark:hover:text-primary-500 dark:hover:bg-gray-600/30',
+    'text-primary-700 hover:text-primary-800 hover:bg-gray-200/70 dark:text-primary-500 dark:hover:text-primary-500 dark:hover:bg-gray-600/30',
   danger:
     'shadow-sm bg-rose-700 text-white hover:bg-rose-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:bg-rose-600 dark:text-white dark:hover:bg-rose-500 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600'
 }

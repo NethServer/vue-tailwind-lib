@@ -15,7 +15,7 @@ const props = defineProps({
   }
 })
 
-const baseStyle = 'text-gray-900 font-medium leading-normal'
+const baseStyle = 'font-medium leading-normal text-gray-900 dark:text-gray-100'
 
 const levelStyle: { [index: string]: string } = {
   h1: 'text-2xl mb-4',
@@ -27,5 +27,5 @@ const allStyles = computed(() => [baseStyle, levelStyle[props.level]].join(' '))
 </script>
 
 <template>
-  <h1 :class="allStyles"><slot></slot></h1>
+  <div :class="allStyles"><slot></slot></div>
 </template>

@@ -1,0 +1,18 @@
+.sb-show-main.sb-main-padded {
+  /* remove default padding from component area */
+  padding: 0;
+}
+
+#storybook-root {
+  /* set background color according to theme */
+  @apply h-screen p-10 bg-gray-100 dark:bg-gray-800;
+}
+
+.docs-story {
+  /* set background color according to theme (in Docs page) */
+  @apply p-10 bg-gray-100 dark:bg-gray-800;
+}
+
+.toggle-theme-button {
+  @apply block mt-10 underline text-sm text-gray-700 dark:text-gray-300;
+}
