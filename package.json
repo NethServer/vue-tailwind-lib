@@ -1,7 +1,7 @@
 {
   "name": "@nethserver/vue-tailwind-lib",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "nethserver",
     "nethesis",
@@ -40,16 +40,31 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.15",
+    "@storybook/addon-interactions": "^7.0.15",
+    "@storybook/addon-links": "^7.0.15",
+    "@storybook/blocks": "^7.0.15",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/vue3": "^7.0.15",
+    "@storybook/vue3-vite": "^7.0.15",
     "@vitejs/plugin-vue": "^4.1.0",
+    "autoprefixer": "^10.4.14",
     "path": "^0.12.7",
+    "postcss": "^8.4.23",
     "prettier": "2.8.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup-plugin-typescript2": "^0.34.1",
+    "storybook": "^7.0.15",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0",

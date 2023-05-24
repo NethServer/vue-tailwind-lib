@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<!-- <script setup lang="ts"></script>
+
+  DELETE FILE //// 
 
 <template>
   <div>
@@ -24,4 +26,4 @@
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
-</style>
+</style> -->

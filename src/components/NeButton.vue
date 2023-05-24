@@ -38,7 +38,7 @@ const kindStyle: { [index: string]: string } = {
   tertiary:
     'text-primary-700 hover:text-primary-800 hover:bg-gray-50 dark:text-primary-500 dark:hover:text-primary-500 dark:hover:bg-gray-600',
   danger:
-    'shadow-sm bg-rose-700 text-white hover:bg-rose-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:bg-rose-500 dark:text-rose-950 dark:hover:bg-rose-400 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600'
+    'shadow-sm bg-rose-700 text-white hover:bg-rose-800 disabled:bg-gray-200 disabled:ring-gray-200 dark:bg-rose-600 dark:text-white dark:hover:bg-rose-500 dark:disabled:bg-gray-600 dark:disabled:ring-gray-600'
 }
 
 const allStyles = computed(() =>
