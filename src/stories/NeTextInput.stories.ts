@@ -16,6 +16,7 @@ const meta = {
     placeholder: 'Placeholder',
     helperText: '',
     invalidMessage: '',
+    disabled: false,
     id: ''
   }
 } satisfies Meta<typeof NeTextInput>
@@ -58,4 +59,15 @@ export const Invalid: Story = {
   args: {
     invalidMessage: 'Invalid input value'
   }
+}
+
+export const Disabled: Story = {
+  render: (args) => ({
+    components: { NeTextInput },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: { disabled: true }
 }

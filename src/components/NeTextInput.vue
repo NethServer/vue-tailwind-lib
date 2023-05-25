@@ -37,9 +37,11 @@ const emit = defineEmits(['update:modelValue'])
 library.add(fasCircleExclamation)
 
 const inputBaseStyle =
-  'block w-full rounded-md border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 text-gray-900 placeholder:text-gray-400'
-const inputValidStyle = 'ring-gray-300 focus:ring-primary-600'
-const inputInvalidStyle = 'pr-10 ring-rose-300 focus:ring-rose-500'
+  'block w-full rounded-md border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-50 text-gray-900 bg-white placeholder:text-gray-400 transition-colors duration-200 dark:text-gray-50 dark:bg-gray-950 dark:placeholder:text-gray-500'
+const inputValidStyle =
+  'ring-gray-300 focus:ring-primary-600 dark:ring-gray-600 dark:focus:ring-primary-300'
+const inputInvalidStyle =
+  'pr-10 ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
 
 const descriptionBaseStyle = 'mt-2 text-sm'
 
@@ -56,9 +58,11 @@ function emitModelValue(ev) {
 
 <template>
   <div>
-    <label :for="componentId" class="block text-sm font-medium leading-6 text-gray-700">{{
-      label
-    }}</label>
+    <label
+      :for="componentId"
+      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+      >{{ label }}</label
+    >
     <div class="relative mt-2 rounded-md shadow-sm">
       <input
         type="text"
@@ -68,6 +72,7 @@ function emitModelValue(ev) {
         :class="inputStyles"
         :placeholder="placeholder"
         :aria-describedby="componentId + '-description'"
+        v-bind="$attrs"
       />
       <!-- invalid icon -->
       <div
@@ -76,7 +81,7 @@ function emitModelValue(ev) {
       >
         <font-awesome-icon
           :icon="['fas', 'circle-exclamation']"
-          class="h-4 w-4 text-rose-500"
+          class="h-4 w-4 text-rose-700 dark:text-rose-400"
           aria-hidden="true"
         />
       </div>
@@ -84,7 +89,7 @@ function emitModelValue(ev) {
     <!-- invalid message -->
     <p
       v-if="invalidMessage"
-      :class="[descriptionBaseStyle, 'text-rose-600']"
+      :class="[descriptionBaseStyle, 'text-rose-700 dark:text-rose-400']"
       :id="componentId + '-description'"
     >
       {{ invalidMessage }}
@@ -92,7 +97,7 @@ function emitModelValue(ev) {
     <!-- helper text -->
     <p
       v-else-if="helperText"
-      :class="[descriptionBaseStyle, 'text-gray-500']"
+      :class="[descriptionBaseStyle, 'text-gray-500 dark:text-gray-400']"
       :id="componentId + '-description'"
     >
       {{ helperText }}
