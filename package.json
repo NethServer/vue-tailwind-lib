@@ -1,7 +1,7 @@
 {
   "name": "@nethserver/vue-tailwind-lib",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.7",
   "keywords": [
     "nethserver",
     "nethesis",
@@ -45,6 +45,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "github:nethesis/Font-Awesome#solid",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "uid": "^2.0.2",
     "vue": "^3.2.47"
   },
   "devDependencies": {
@@ -55,6 +59,7 @@
     "@storybook/testing-library": "^0.0.14-next.2",
     "@storybook/vue3": "^7.0.15",
     "@storybook/vue3-vite": "^7.0.15",
+    "@tailwindcss/forms": "^0.5.3",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "path": "^0.12.7",
