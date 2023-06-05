@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { uid } from 'uid/single'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -28,6 +28,16 @@ const props = defineProps({
   },
   invalidMessage: {
     type: String
+  },
+  isPassword: {
+    type: Boolean,
+    default: false
+  },
+  showPasswordLabel: {
+    type: String
+  },
+  hidePasswordLabel: {
+    type: String
   }
 })
 
@@ -45,6 +55,8 @@ const inputInvalidStyle =
 
 const descriptionBaseStyle = 'mt-2 text-sm'
 
+let isPasswordVisible = ref(false)
+
 const componentId = computed(() => (props.id ? props.id : uid()))
 
 const inputStyles = computed(() =>
@@ -54,18 +66,32 @@ const inputStyles = computed(() =>
 function emitModelValue(ev) {
   emit('update:modelValue', ev.target.value)
 }
+
+function togglePasswordVisible() {
+  isPasswordVisible.value = !isPasswordVisible.value
+}
 </script>
 
 <template>
   <div>
-    <label
-      :for="componentId"
-      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
-      >{{ label }}</label
-    >
+    <div class="flex items-center justify-between">
+      <label
+        :for="componentId"
+        class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+        >{{ label }}</label
+      >
+      <div v-if="isPassword" class="text-sm">
+        <button
+          @click="togglePasswordVisible"
+          class="font-semibold text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
+        >
+          {{ isPasswordVisible ? hidePasswordLabel : showPasswordLabel }}
+        </button>
+      </div>
+    </div>
     <div class="relative mt-2 rounded-md shadow-sm">
       <input
-        type="text"
+        :type="isPassword && !isPasswordVisible ? 'password' : 'text'"
         :value="modelValue"
         @input="($event) => emitModelValue($event)"
         :id="componentId"

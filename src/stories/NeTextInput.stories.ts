@@ -17,14 +17,17 @@ const meta = {
     helperText: '',
     invalidMessage: '',
     disabled: false,
-    id: ''
+    id: '',
+    isPassword: false,
+    showPasswordLabel: 'Show',
+    hidePasswordLabel: 'Hide'
   }
 } satisfies Meta<typeof NeTextInput>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const template = '<NeTextInput v-bind="args">Your sample title</NeTextInput>'
+const template = '<NeTextInput v-bind="args" class="max-w-md">Your sample title</NeTextInput>'
 
 export const Default: Story = {
   render: (args) => ({
@@ -70,4 +73,15 @@ export const Disabled: Story = {
     template: template
   }),
   args: { disabled: true }
+}
+
+export const Password: Story = {
+  render: (args) => ({
+    components: { NeTextInput },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: { isPassword: true, label: 'Enter password', placeholder: '' }
 }
