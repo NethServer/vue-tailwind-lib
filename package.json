@@ -1,7 +1,7 @@
 {
   "name": "@nethserver/vue-tailwind-lib",
   "private": false,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "keywords": [
     "nethserver",
     "nethesis",

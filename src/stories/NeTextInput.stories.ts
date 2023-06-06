@@ -19,8 +19,8 @@ const meta = {
     disabled: false,
     id: '',
     isPassword: false,
-    showPasswordLabel: 'Show',
-    hidePasswordLabel: 'Hide'
+    showPasswordLabel: 'Show password',
+    hidePasswordLabel: 'Hide password'
   }
 } satisfies Meta<typeof NeTextInput>
 

@@ -9,6 +9,8 @@ import { uid } from 'uid/single'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCircleExclamation as fasCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import { faEye as fasEye } from '@fortawesome/free-solid-svg-icons'
+import { faEyeSlash as fasEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 const props = defineProps({
   label: {
@@ -45,6 +47,8 @@ const emit = defineEmits(['update:modelValue'])
 
 // add fontawesome icons
 library.add(fasCircleExclamation)
+library.add(fasEye)
+library.add(fasEyeSlash)
 
 const inputBaseStyle =
   'block w-full rounded-md border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-50 text-gray-900 bg-white placeholder:text-gray-400 transition-colors duration-200 dark:text-gray-50 dark:bg-gray-950 dark:placeholder:text-gray-500'
@@ -74,21 +78,11 @@ function togglePasswordVisible() {
 
 <template>
   <div>
-    <div class="flex items-center justify-between">
-      <label
-        :for="componentId"
-        class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
-        >{{ label }}</label
-      >
-      <div v-if="isPassword" class="text-sm">
-        <button
-          @click="togglePasswordVisible"
-          class="font-semibold text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200"
-        >
-          {{ isPasswordVisible ? hidePasswordLabel : showPasswordLabel }}
-        </button>
-      </div>
-    </div>
+    <label
+      :for="componentId"
+      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+      >{{ label }}</label
+    >
     <div class="relative mt-2 rounded-md shadow-sm">
       <input
         :type="isPassword && !isPasswordVisible ? 'password' : 'text'"
@@ -100,9 +94,22 @@ function togglePasswordVisible() {
         :aria-describedby="componentId + '-description'"
         v-bind="$attrs"
       />
+      <!-- show/hide password toggle -->
+      <div v-if="isPassword" class="absolute inset-y-0 right-0 flex items-center">
+        <button type="button" @click="togglePasswordVisible" class="px-3 cursor-pointer">
+          <span class="sr-only">{{
+            isPasswordVisible ? hidePasswordLabel : showPasswordLabel
+          }}</span>
+          <font-awesome-icon
+            :icon="['fas', isPasswordVisible ? 'eye-slash' : 'eye']"
+            class="h-4 w-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
       <!-- invalid icon -->
       <div
-        v-if="invalidMessage"
+        v-else-if="invalidMessage"
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
       >
         <font-awesome-icon
