@@ -41,9 +41,17 @@ const props = defineProps({
   hidePasswordLabel: {
     type: String
   }
+  // ref: { ////
+  //   type: String
+  // }
 })
 
 const emit = defineEmits(['update:modelValue'])
+
+// expose focus function
+defineExpose({
+  focus
+})
 
 // add fontawesome icons
 library.add(fasCircleExclamation)
@@ -67,12 +75,18 @@ const inputStyles = computed(() =>
   [inputBaseStyle, props.invalidMessage ? inputInvalidStyle : inputValidStyle].join(' ')
 )
 
+const inputRef = ref()
+
 function emitModelValue(ev) {
   emit('update:modelValue', ev.target.value)
 }
 
 function togglePasswordVisible() {
   isPasswordVisible.value = !isPasswordVisible.value
+}
+
+function focus() {
+  inputRef.value.focus()
 }
 </script>
 
@@ -93,6 +107,7 @@ function togglePasswordVisible() {
         :placeholder="placeholder"
         :aria-describedby="componentId + '-description'"
         v-bind="$attrs"
+        ref="inputRef"
       />
       <!-- show/hide password toggle -->
       <div v-if="isPassword" class="absolute inset-y-0 right-0 flex items-center">

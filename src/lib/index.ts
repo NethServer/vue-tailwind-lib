@@ -1,2 +1,2 @@
-export { sortByProperty } from './utils'
+export { sortByProperty, focusElement } from './utils'
 export { setStringItem, getStringItem } from './storage'
