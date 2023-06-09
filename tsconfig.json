@@ -17,6 +17,10 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    /* added to solve editor errors issue */
+    "types": [
+      "vite/client" // if using vite
+    ],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
