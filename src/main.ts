@@ -1,23 +1,18 @@
 import type { App } from 'vue'
-import { NeButton, NeTitle, NeTextInput } from '@/components'
+import { NeButton, NeTitle, NeTextInput, NeTextArea } from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty } from '@/lib/utils'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' ////
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { faUserSecret as fasUserSecret } from '@fortawesome/free-solid-svg-icons' ////
 
 export default {
   install: (app: App) => {
     app.component('NeButton', NeButton)
     app.component('NeTitle', NeTitle)
     app.component('NeTextInput', NeTextInput)
-    // app.component('font-awesome-icon', FontAwesomeIcon) ////
+    app.component('NeTextArea', NeTextArea)
   }
 }
 
-// library.add(fasUserSecret) ////
-
-export { NeButton, NeTitle, NeTextInput }
+export { NeButton, NeTitle, NeTextInput, NeTextArea }
 
 // utils lib
 export { sortByProperty }
