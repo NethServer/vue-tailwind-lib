@@ -41,9 +41,6 @@ const props = defineProps({
   hidePasswordLabel: {
     type: String
   }
-  // ref: { ////
-  //   type: String
-  // }
 })
 
 const emit = defineEmits(['update:modelValue'])
