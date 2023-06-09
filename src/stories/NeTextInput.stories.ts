@@ -27,7 +27,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const template = '<NeTextInput v-bind="args" class="max-w-md">Your sample title</NeTextInput>'
+const template = '<NeTextInput v-bind="args" class="max-w-md" />'
 
 export const Default: Story = {
   render: (args) => ({
