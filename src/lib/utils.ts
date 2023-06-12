@@ -30,3 +30,30 @@ export const focusElement = (elementRef: any) => {
     }
   })
 }
+
+/**
+ * Returns a i18n key for an error returned by Axios
+ *
+ */
+export const getAxiosErrorMessage = (error: any) => {
+  if (error.message === 'Network Error') {
+    return 'error.network_error'
+  }
+
+  if (/^timeout of .+ exceeded$/.test(error.message)) {
+    // axios timeout reached
+    return 'error.network_timeout'
+  }
+
+  if (error.response) {
+    switch (error.response.status) {
+      case 401:
+        return 'error.http_401'
+      case 403:
+        return 'error.http_403'
+      case 404:
+        return 'error.http_404'
+    }
+  }
+  return 'error.generic_error'
+}

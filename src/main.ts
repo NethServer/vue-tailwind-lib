@@ -8,7 +8,7 @@ import {
   NeInlineNotification
 } from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
-import { sortByProperty, focusElement } from '@/lib/utils'
+import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
 
 export default {
   install: (app: App) => {
@@ -24,7 +24,7 @@ export default {
 export { NeButton, NeTitle, NeTextInput, NeTextArea, NeFormItemLabel, NeInlineNotification }
 
 // utils lib
-export { sortByProperty, focusElement }
+export { sortByProperty, focusElement, getAxiosErrorMessage }
 
 // storage lib
 export { setStringItem, getStringItem }
