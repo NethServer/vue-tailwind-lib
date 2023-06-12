@@ -36,10 +36,12 @@ const props = defineProps({
     default: false
   },
   showPasswordLabel: {
-    type: String
+    type: String,
+    default: 'Show password'
   },
   hidePasswordLabel: {
-    type: String
+    type: String,
+    default: 'Hide password'
   }
 })
 
