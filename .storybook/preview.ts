@@ -7,27 +7,7 @@ import './storybook.css'
 const withThemeProvider = (storyFn, context) => {
   const story = storyFn()
 
-  // const theme = ref(context.globals.theme) ////
-
   return () => {
-    // return h('div', { class: theme }, [ ////
-    //   h('div', { class: 'story-wrapper bg-gray-100 dark:bg-gray-800 p-12' }, [
-    //     h(story, { ...context.args })
-    //   ])
-    // ])
-
-    // return h('div', { class: ['story-wrapper bg-gray-100 dark:bg-gray-800 p-12', theme] }, [ ////
-    //   h(story, { ...context.args })
-    // ])
-
-    // return h('div', { class: ['story-wrapper', 'bg-gray-100', 'dark:bg-gray-800', 'p-12'] }, [
-    //   h(story, { ...context.args })
-    // ])
-
-    // return h('div', { class: theme }, [h(story, { ...context.args })]) ////
-
-    // return h(story, { class: theme, ...context.args }, [context.globals.theme]) ////
-
     return h('div', [
       h(story, { ...context.args }),
       h(
@@ -61,21 +41,6 @@ const preview: Preview = {
       }
     }
   },
-  // globalTypes: { ////
-  //   theme: {
-  //     description: 'Global theme for components',
-  //     defaultValue: 'light',
-  //     toolbar: {
-  //       title: 'Theme',
-  //       icon: 'mirror',
-  //       items: [
-  //         { value: 'light', title: 'Light' },
-  //         { value: 'dark', title: 'Dark' }
-  //       ],
-  //       dynamicTitle: false
-  //     }
-  //   }
-  // },
   decorators: [withThemeProvider]
 }
 
