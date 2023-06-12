@@ -10,7 +10,7 @@
 
 .docs-story {
   /* set background color according to theme (in Docs page) */
-  @apply p-10 bg-gray-100 dark:bg-gray-800;
+  @apply p-10 bg-gray-50 dark:bg-gray-900;
 }
 
 .toggle-theme-button {
