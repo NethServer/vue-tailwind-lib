@@ -1,5 +1,12 @@
 import type { App } from 'vue'
-import { NeButton, NeTitle, NeTextInput, NeTextArea, NeFormItemLabel } from '@/components'
+import {
+  NeButton,
+  NeTitle,
+  NeTextInput,
+  NeTextArea,
+  NeFormItemLabel,
+  NeInlineNotification
+} from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty, focusElement } from '@/lib/utils'
 
@@ -10,10 +17,11 @@ export default {
     app.component('NeTextInput', NeTextInput)
     app.component('NeTextArea', NeTextArea)
     app.component('NeFormItemLabel', NeFormItemLabel)
+    app.component('NeInlineNotification', NeInlineNotification)
   }
 }
 
-export { NeButton, NeTitle, NeTextInput, NeTextArea, NeFormItemLabel }
+export { NeButton, NeTitle, NeTextInput, NeTextArea, NeFormItemLabel, NeInlineNotification }
 
 // utils lib
 export { sortByProperty, focusElement }
