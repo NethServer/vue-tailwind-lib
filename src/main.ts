@@ -5,7 +5,8 @@ import {
   NeTextInput,
   NeTextArea,
   NeFormItemLabel,
-  NeInlineNotification
+  NeInlineNotification,
+  NeSkeleton
 } from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
@@ -18,10 +19,19 @@ export default {
     app.component('NeTextArea', NeTextArea)
     app.component('NeFormItemLabel', NeFormItemLabel)
     app.component('NeInlineNotification', NeInlineNotification)
+    app.component('NeSkeleton', NeSkeleton)
   }
 }
 
-export { NeButton, NeTitle, NeTextInput, NeTextArea, NeFormItemLabel, NeInlineNotification }
+export {
+  NeButton,
+  NeTitle,
+  NeTextInput,
+  NeTextArea,
+  NeFormItemLabel,
+  NeInlineNotification,
+  NeSkeleton
+}
 
 // utils lib
 export { sortByProperty, focusElement, getAxiosErrorMessage }

@@ -21,7 +21,7 @@ const props = defineProps({
 })
 
 const baseStyle =
-  'font-semibold disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 focus:ring-4 focus:outline-none focus:ring-primary-400 dark:focus:ring-primary-700'
+  'font-semibold disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-700'
 
 const sizeStyle: { [index: string]: string } = {
   xs: 'rounded px-2 py-1 text-xs',

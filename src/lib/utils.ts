@@ -53,6 +53,8 @@ export const getAxiosErrorMessage = (error: any) => {
         return 'error.http_403'
       case 404:
         return 'error.http_404'
+      case 500:
+        return 'error.http_500'
     }
   }
   return 'error.generic_error'

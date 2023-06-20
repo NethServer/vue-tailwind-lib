@@ -13,8 +13,6 @@ import { faCircleXmark as fasCircleXmark } from '@fortawesome/free-solid-svg-ico
 import { faCircleCheck as fasCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons'
 
-//// review
-
 type NotificationKind = 'info' | 'warning' | 'error' | 'success'
 
 const props = defineProps({
