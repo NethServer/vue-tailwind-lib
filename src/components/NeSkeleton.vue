@@ -33,7 +33,7 @@ const sizeStyle: { [index: string]: string } = {
         v-for="index in props.lines"
         :key="index"
         :class="`${sizeStyle[props.size]} rounded bg-gray-300 dark:bg-gray-700`"
-        :style="props.lines > 1 ? `width: ${70 + Math.round(Math.random() * 30)}%` : ''"
+        :style="props.lines > 1 ? `width: ${65 + Math.round(Math.random() * 35)}%` : ''"
       ></div>
     </div>
   </div>
