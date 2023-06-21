@@ -1,7 +1,7 @@
 {
   "name": "@nethserver/vue-tailwind-lib",
   "private": false,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "keywords": [
     "nethserver",
     "nethesis",
@@ -48,6 +48,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "github:nethesis/Font-Awesome#solid",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@headlessui/vue": "^1.7.14",
     "uid": "^2.0.2",
     "vue": "^3.2.47"
   },

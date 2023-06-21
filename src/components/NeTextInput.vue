@@ -52,6 +52,10 @@ defineExpose({
   focus
 })
 
+defineOptions({
+  inheritAttrs: false
+})
+
 // add fontawesome icons
 library.add(fasCircleExclamation)
 library.add(fasEye)

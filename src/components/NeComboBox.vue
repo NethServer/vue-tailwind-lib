@@ -1,0 +1,161 @@
+<!--
+  Copyright (C) 2023 Nethesis S.r.l.
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<script setup lang="ts">
+import { computed, onMounted, ref, watch } from 'vue'
+import {
+  Combobox,
+  ComboboxButton,
+  ComboboxInput,
+  ComboboxLabel,
+  ComboboxOption,
+  ComboboxOptions
+} from '@headlessui/vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faChevronDown as fasChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faCheck as fasCheck } from '@fortawesome/free-solid-svg-icons'
+
+export interface Option {
+  id: string
+  label: string
+  disabled?: boolean
+}
+
+export interface Props {
+  modelValue: string
+  options: Option[]
+  label?: string
+  placeholder?: string
+  noResultsLabel?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  options: () => [],
+  label: '',
+  placeholder: '',
+  noResultsLabel: 'No results'
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+// add fontawesome icons
+library.add(fasCheck)
+library.add(fasChevronDown)
+
+const query = ref('')
+const selectedOption = ref(null) as any
+const filteredOptions = computed(() => {
+  if (!query.value) {
+    return props.options
+  }
+
+  const results = props.options.filter((option: any) => {
+    return option.label.toLowerCase().includes(query.value.toLowerCase())
+  })
+
+  if (!results.length) {
+    return [{ id: 'no_results', label: props.noResultsLabel, disabled: true }]
+  }
+
+  return results
+})
+
+watch(selectedOption, () => {
+  if (selectedOption.value) {
+    emit('update:modelValue', selectedOption.value.id)
+  } else {
+    emit('update:modelValue', '')
+  }
+})
+
+onMounted(() => {
+  selectOptionFromModelValue()
+})
+
+watch(
+  () => [props.modelValue],
+  () => {
+    selectOptionFromModelValue()
+  }
+)
+
+function selectOptionFromModelValue() {
+  const optionFound: any = props.options.find((option) => option.id === props.modelValue)
+
+  if (optionFound) {
+    selectedOption.value = optionFound
+  }
+}
+</script>
+
+<template>
+  <Combobox as="div" v-model="selectedOption" nullable>
+    <ComboboxLabel class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200">{{
+      props.label
+    }}</ComboboxLabel>
+    <div class="relative mt-2">
+      <ComboboxInput
+        class="w-full rounded-md border-0 py-1.5 pl-3 pr-10 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50 ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300"
+        @change="query = $event.target.value"
+        :display-value="(option: any) => option?.label"
+        :placeholder="props.placeholder"
+        @blur="query = ''"
+      />
+      <ComboboxButton
+        class="absolute inset-y-0 right-0 flex items-center rounded-r-md pl-5 pr-3 focus:outline-none text-gray-600 dark:text-gray-300"
+      >
+        <font-awesome-icon
+          :icon="['fas', 'chevron-down']"
+          class="h-3 w-3 shrink-0"
+          aria-hidden="true"
+        />
+      </ComboboxButton>
+
+      <ComboboxOptions
+        v-if="filteredOptions.length > 0"
+        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-opacity-5 focus:outline-none sm:text-sm bg-white ring-gray-900/5 dark:bg-gray-950 dark:ring-gray-100/5"
+      >
+        <ComboboxOption
+          v-for="option in filteredOptions"
+          :key="option.id"
+          :value="option"
+          as="template"
+          v-slot="{ active, selected }"
+          :disabled="option.disabled"
+        >
+          <li
+            :class="[
+              'relative cursor-default select-none py-2 pl-3 pr-9',
+              active
+                ? 'cursor-pointer bg-primary-600 text-white dark:bg-primary-500 dark:text-gray-950'
+                : option.disabled
+                ? 'cursor-not-allowed text-gray-500 dark:text-gray-500'
+                : 'text-gray-900 dark:text-gray-100'
+            ]"
+          >
+            <span :class="['block truncate', selected && 'font-semibold']">
+              {{ option.label }}
+            </span>
+
+            <span
+              v-if="selected"
+              :class="[
+                'absolute inset-y-0 right-0 flex items-center pr-4',
+                active ? 'text-white dark:text-gray-950' : 'text-primary-600 dark:text-primary-500'
+              ]"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'check']"
+                class="h-4 w-4 shrink-0"
+                aria-hidden="true"
+              />
+            </span>
+          </li>
+        </ComboboxOption>
+      </ComboboxOptions>
+    </div>
+  </Combobox>
+</template>

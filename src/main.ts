@@ -7,7 +7,8 @@ import {
   NeFormItemLabel,
   NeInlineNotification,
   NeSkeleton,
-  NeTabs
+  NeTabs,
+  NeComboBox
 } from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
@@ -22,6 +23,7 @@ export default {
     app.component('NeInlineNotification', NeInlineNotification)
     app.component('NeSkeleton', NeSkeleton)
     app.component('NeTabs', NeTabs)
+    app.component('NeComboBox', NeComboBox)
   }
 }
 
@@ -33,7 +35,8 @@ export {
   NeFormItemLabel,
   NeInlineNotification,
   NeSkeleton,
-  NeTabs
+  NeTabs,
+  NeComboBox
 }
 
 // utils lib
