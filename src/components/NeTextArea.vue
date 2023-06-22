@@ -63,11 +63,12 @@ function emitModelValue(ev) {
 <template>
   <div>
     <label
+      v-if="label"
       :for="componentId"
-      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+      class="block text-sm font-medium leading-6 mb-2 text-gray-700 dark:text-gray-200"
       >{{ label }}</label
     >
-    <div class="relative mt-2 rounded-md shadow-sm">
+    <div class="relative rounded-md shadow-sm">
       <textarea
         :value="modelValue"
         @input="($event) => emitModelValue($event)"

@@ -133,10 +133,10 @@ const descriptionBaseStyle = 'mt-2 text-sm'
   <Combobox as="div" v-model="selectedOption" :nullable="props.clearable">
     <ComboboxLabel
       v-if="props.label"
-      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+      class="block text-sm font-medium leading-6 mb-2 text-gray-700 dark:text-gray-200"
       >{{ props.label }}</ComboboxLabel
     >
-    <div class="relative mt-2">
+    <div class="relative">
       <ComboboxInput
         :class="`${
           props.invalidMessage ? inputInvalidStyle : inputValidStyle
