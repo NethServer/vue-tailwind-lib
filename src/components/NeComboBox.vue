@@ -30,6 +30,8 @@ export interface Props {
   options: Option[]
   label?: string
   placeholder?: string
+  helperText?: string
+  invalidMessage?: string
   clearable?: boolean
   // limit the number of options displayed for performance
   maxOptionsShown?: number
@@ -41,6 +43,8 @@ const props = withDefaults(defineProps<Props>(), {
   options: () => [],
   label: '',
   placeholder: '',
+  helperText: '',
+  invalidMessage: '',
   clearable: true,
   maxOptionsShown: 30,
   noResultsLabel: 'No results',
@@ -116,6 +120,13 @@ function selectOptionFromModelValue() {
     selectedOption.value = optionFound
   }
 }
+
+const inputValidStyle =
+  'ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300'
+
+const inputInvalidStyle = 'ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
+
+const descriptionBaseStyle = 'mt-2 text-sm'
 </script>
 
 <template>
@@ -127,7 +138,9 @@ function selectOptionFromModelValue() {
     >
     <div class="relative mt-2">
       <ComboboxInput
-        class="w-full rounded-md border-0 py-1.5 pl-3 pr-10 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50 ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300"
+        :class="`${
+          props.invalidMessage ? inputInvalidStyle : inputValidStyle
+        } w-full rounded-md border-0 py-1.5 pl-3 pr-10 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-50 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50`"
         @change="query = $event.target.value"
         :display-value="(option: any) => option?.label"
         :placeholder="props.placeholder"
@@ -197,5 +210,13 @@ function selectOptionFromModelValue() {
         </ComboboxOption>
       </ComboboxOptions>
     </div>
+    <!-- invalid message -->
+    <p v-if="invalidMessage" :class="[descriptionBaseStyle, 'text-rose-700 dark:text-rose-400']">
+      {{ invalidMessage }}
+    </p>
+    <!-- helper text -->
+    <p v-else-if="helperText" :class="[descriptionBaseStyle, 'text-gray-500 dark:text-gray-400']">
+      {{ helperText }}
+    </p>
   </Combobox>
 </template>

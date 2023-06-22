@@ -12,6 +12,8 @@ const meta = {
   args: {
     label: 'Choose fruit',
     placeholder: 'Placeholder',
+    helperText: '',
+    invalidMessage: '',
     clearable: true,
     maxOptionsShown: 30,
     noResultsLabel: 'No results',
@@ -71,6 +73,42 @@ export const NotClearable: Story = {
     template: template
   }),
   args: {
-    clearable: false
+    clearable: false,
+    modelValue: '2'
   }
+}
+
+export const HelperText: Story = {
+  render: (args) => ({
+    components: { NeComboBox },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: { helperText: 'Helper text' }
+}
+
+export const Invalid: Story = {
+  render: (args) => ({
+    components: { NeComboBox },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: {
+    invalidMessage: 'Invalid value'
+  }
+}
+
+export const Disabled: Story = {
+  render: (args) => ({
+    components: { NeComboBox },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: { disabled: true }
 }
