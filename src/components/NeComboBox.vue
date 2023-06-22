@@ -53,6 +53,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue'])
 
+// expose focus function
+defineExpose({
+  focus
+})
+
 // add fontawesome icons
 library.add(fasCheck)
 library.add(fasChevronDown)
@@ -60,6 +65,15 @@ library.add(fasXmark)
 
 const query = ref('')
 const selectedOption = ref(null) as any
+const textInputRef = ref()
+
+const inputValidStyle =
+  'ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300'
+
+const inputInvalidStyle = 'ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
+
+const descriptionBaseStyle = 'mt-2 text-sm'
+
 const filteredOptions = computed(() => {
   if (!query.value) {
     return getLimitedNumberOfOptions(props.options)
@@ -139,12 +153,9 @@ function selectOptionFromModelValue() {
   }
 }
 
-const inputValidStyle =
-  'ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300'
-
-const inputInvalidStyle = 'ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
-
-const descriptionBaseStyle = 'mt-2 text-sm'
+function focus() {
+  textInputRef.value.focus()
+}
 </script>
 
 <template>
@@ -163,6 +174,7 @@ const descriptionBaseStyle = 'mt-2 text-sm'
         :display-value="(option: any) => option?.label"
         :placeholder="props.placeholder"
         @blur="onBlur"
+        ref="textInputRef"
       />
       <button
         v-if="props.clearable && selectedOption?.id"
