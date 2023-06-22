@@ -60,7 +60,8 @@ export const ManyOptions: Story = {
     template: template
   }),
   args: {
-    options: manyOptions
+    options: manyOptions,
+    label: 'Choose'
   }
 }
 

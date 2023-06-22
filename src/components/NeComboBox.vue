@@ -106,11 +106,29 @@ function getLimitedNumberOfOptions(options: any[]) {
 
   // add hint
   options.push({ id: 'limited_options_hint', label: props.limitedOptionsLabel, disabled: true })
+
+  // add selected item if needed
+  if (selectedOption.value) {
+    const selectedOptionFound = options.find(
+      (option: Option) => option.id === selectedOption.value?.id
+    )
+
+    if (!selectedOptionFound) {
+      options.unshift(selectedOption.value)
+    }
+  }
   return options
 }
 
 function clearSelection() {
   selectedOption.value = null
+  query.value = ''
+}
+
+function onBlur() {
+  setTimeout(() => {
+    query.value = ''
+  }, 1000)
 }
 
 function selectOptionFromModelValue() {
@@ -144,7 +162,7 @@ const descriptionBaseStyle = 'mt-2 text-sm'
         @change="query = $event.target.value"
         :display-value="(option: any) => option?.label"
         :placeholder="props.placeholder"
-        @blur="query = ''"
+        @blur="onBlur"
       />
       <button
         v-if="props.clearable && selectedOption?.id"
