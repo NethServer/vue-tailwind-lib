@@ -30,6 +30,7 @@ export interface Props {
   options: Option[]
   label?: string
   placeholder?: string
+  clearable?: boolean
   // limit the number of options displayed for performance
   maxOptionsShown?: number
   noResultsLabel?: string
@@ -40,6 +41,7 @@ const props = withDefaults(defineProps<Props>(), {
   options: () => [],
   label: '',
   placeholder: '',
+  clearable: true,
   maxOptionsShown: 30,
   noResultsLabel: 'No results',
   limitedOptionsLabel: 'Continue typing to show more options'
@@ -117,10 +119,12 @@ function selectOptionFromModelValue() {
 </script>
 
 <template>
-  <Combobox as="div" v-model="selectedOption" nullable>
-    <ComboboxLabel class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200">{{
-      props.label
-    }}</ComboboxLabel>
+  <Combobox as="div" v-model="selectedOption" :nullable="props.clearable">
+    <ComboboxLabel
+      v-if="props.label"
+      class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200"
+      >{{ props.label }}</ComboboxLabel
+    >
     <div class="relative mt-2">
       <ComboboxInput
         class="w-full rounded-md border-0 py-1.5 pl-3 pr-10 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50 ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300"
@@ -130,7 +134,7 @@ function selectOptionFromModelValue() {
         @blur="query = ''"
       />
       <button
-        v-if="selectedOption?.id"
+        v-if="props.clearable && selectedOption?.id"
         @click="clearSelection"
         class="absolute inset-y-0 right-10 px-1 flex items-center"
       >

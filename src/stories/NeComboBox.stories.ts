@@ -12,6 +12,7 @@ const meta = {
   args: {
     label: 'Choose fruit',
     placeholder: 'Placeholder',
+    clearable: true,
     maxOptionsShown: 30,
     noResultsLabel: 'No results',
     limitedOptionsLabel: 'Continue typing to show more options',
@@ -58,5 +59,18 @@ export const ManyOptions: Story = {
   }),
   args: {
     options: manyOptions
+  }
+}
+
+export const NotClearable: Story = {
+  render: (args) => ({
+    components: { NeComboBox },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: {
+    clearable: false
   }
 }
