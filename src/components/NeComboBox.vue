@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown as fasChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faCheck as fasCheck } from '@fortawesome/free-solid-svg-icons'
+import { faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons'
 
 export interface Option {
   id: string
@@ -29,14 +30,19 @@ export interface Props {
   options: Option[]
   label?: string
   placeholder?: string
+  // limit the number of options displayed for performance
+  maxOptionsShown?: number
   noResultsLabel?: string
+  limitedOptionsLabel?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   options: () => [],
   label: '',
   placeholder: '',
-  noResultsLabel: 'No results'
+  maxOptionsShown: 30,
+  noResultsLabel: 'No results',
+  limitedOptionsLabel: 'Continue typing to show more options'
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -44,23 +50,25 @@ const emit = defineEmits(['update:modelValue'])
 // add fontawesome icons
 library.add(fasCheck)
 library.add(fasChevronDown)
+library.add(fasXmark)
 
 const query = ref('')
 const selectedOption = ref(null) as any
 const filteredOptions = computed(() => {
   if (!query.value) {
-    return props.options
+    return getLimitedNumberOfOptions(props.options)
   }
 
-  const results = props.options.filter((option: any) => {
-    return option.label.toLowerCase().includes(query.value.toLowerCase())
+  let results = props.options.filter((option: any) => {
+    return option.label.trim().toLowerCase().includes(query.value.trim().toLowerCase())
   })
 
-  if (!results.length) {
+  if (results.length) {
+    results = getLimitedNumberOfOptions(results)
+    return results
+  } else {
     return [{ id: 'no_results', label: props.noResultsLabel, disabled: true }]
   }
-
-  return results
 })
 
 watch(selectedOption, () => {
@@ -81,6 +89,23 @@ watch(
     selectOptionFromModelValue()
   }
 )
+
+function getLimitedNumberOfOptions(options: any[]) {
+  if (options.length <= props.maxOptionsShown) {
+    return options
+  }
+
+  // limit number of options
+  options = options.slice(0, props.maxOptionsShown)
+
+  // add hint
+  options.push({ id: 'limited_options_hint', label: props.limitedOptionsLabel, disabled: true })
+  return options
+}
+
+function clearSelection() {
+  selectedOption.value = null
+}
 
 function selectOptionFromModelValue() {
   const optionFound: any = props.options.find((option) => option.id === props.modelValue)
@@ -104,8 +129,19 @@ function selectOptionFromModelValue() {
         :placeholder="props.placeholder"
         @blur="query = ''"
       />
+      <button
+        v-if="selectedOption?.id"
+        @click="clearSelection"
+        class="absolute inset-y-0 right-10 px-1 flex items-center"
+      >
+        <font-awesome-icon
+          :icon="['fas', 'xmark']"
+          class="h-4 w-4 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+        />
+      </button>
       <ComboboxButton
-        class="absolute inset-y-0 right-0 flex items-center rounded-r-md pl-5 pr-3 focus:outline-none text-gray-600 dark:text-gray-300"
+        class="absolute inset-y-0 right-0 flex items-center rounded-r-md pl-4 pr-3 focus:outline-none text-gray-500 dark:text-gray-400"
       >
         <font-awesome-icon
           :icon="['fas', 'chevron-down']"
