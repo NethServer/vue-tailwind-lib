@@ -14,8 +14,7 @@ const meta = {
     placeholder: 'Placeholder',
     helperText: '',
     invalidMessage: '',
-    clearable: true,
-    maxOptionsShown: 30,
+    maxOptionsShown: 50,
     noResultsLabel: 'No results',
     limitedOptionsLabel: 'Continue typing to show more options',
     modelValue: '',
@@ -62,20 +61,6 @@ export const ManyOptions: Story = {
   args: {
     options: manyOptions,
     label: 'Choose'
-  }
-}
-
-export const NotClearable: Story = {
-  render: (args) => ({
-    components: { NeComboBox },
-    setup() {
-      return { args }
-    },
-    template: template
-  }),
-  args: {
-    clearable: false,
-    modelValue: '2'
   }
 }
 

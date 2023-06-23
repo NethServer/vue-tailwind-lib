@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown as fasChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faCheck as fasCheck } from '@fortawesome/free-solid-svg-icons'
-import { faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons'
 
 export interface Option {
   id: string
@@ -32,7 +31,6 @@ export interface Props {
   placeholder?: string
   helperText?: string
   invalidMessage?: string
-  clearable?: boolean
   // limit the number of options displayed for performance
   maxOptionsShown?: number
   noResultsLabel?: string
@@ -45,8 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: '',
   helperText: '',
   invalidMessage: '',
-  clearable: true,
-  maxOptionsShown: 30,
+  maxOptionsShown: 50,
   noResultsLabel: 'No results',
   limitedOptionsLabel: 'Continue typing to show more options'
 })
@@ -61,7 +58,6 @@ defineExpose({
 // add fontawesome icons
 library.add(fasCheck)
 library.add(fasChevronDown)
-library.add(fasXmark)
 
 const query = ref('')
 const selectedOption = ref(null) as any
@@ -103,12 +99,12 @@ onMounted(() => {
   selectOptionFromModelValue()
 })
 
-watch(
-  () => [props.modelValue],
-  () => {
-    selectOptionFromModelValue()
-  }
-)
+// watch( ////
+//   () => [props.modelValue],
+//   () => {
+//     selectOptionFromModelValue()
+//   }
+// )
 
 function getLimitedNumberOfOptions(options: any[]) {
   if (options.length <= props.maxOptionsShown) {
@@ -134,11 +130,6 @@ function getLimitedNumberOfOptions(options: any[]) {
   return options
 }
 
-function clearSelection() {
-  selectedOption.value = null
-  query.value = ''
-}
-
 function onBlur() {
   setTimeout(() => {
     query.value = ''
@@ -159,7 +150,7 @@ function focus() {
 </script>
 
 <template>
-  <Combobox as="div" v-model="selectedOption" :nullable="props.clearable">
+  <Combobox as="div" v-model="selectedOption">
     <ComboboxLabel
       v-if="props.label"
       class="block text-sm font-medium leading-6 mb-2 text-gray-700 dark:text-gray-200"
@@ -176,17 +167,6 @@ function focus() {
         @blur="onBlur"
         ref="textInputRef"
       />
-      <button
-        v-if="props.clearable && selectedOption?.id"
-        @click="clearSelection"
-        class="absolute inset-y-0 right-10 px-1 flex items-center"
-      >
-        <font-awesome-icon
-          :icon="['fas', 'xmark']"
-          class="h-4 w-4 text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-        />
-      </button>
       <ComboboxButton
         class="absolute inset-y-0 right-0 flex items-center rounded-r-md pl-4 pr-3 focus:outline-none text-gray-500 dark:text-gray-400"
       >
