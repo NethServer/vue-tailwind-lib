@@ -99,12 +99,12 @@ onMounted(() => {
   selectOptionFromModelValue()
 })
 
-// watch( ////
-//   () => [props.modelValue],
-//   () => {
-//     selectOptionFromModelValue()
-//   }
-// )
+watch(
+  () => props.modelValue,
+  () => {
+    selectOptionFromModelValue()
+  }
+)
 
 function getLimitedNumberOfOptions(options: any[]) {
   if (options.length <= props.maxOptionsShown) {
