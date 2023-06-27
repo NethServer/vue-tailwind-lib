@@ -9,7 +9,8 @@ import {
   NeSkeleton,
   NeTabs,
   NeComboBox,
-  NeCheckbox
+  NeCheckbox,
+  NeToggle
 } from '@/components'
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
@@ -27,6 +28,7 @@ export default {
     app.component('NeTabs', NeTabs)
     app.component('NeComboBox', NeComboBox)
     app.component('NeCheckbox', NeCheckbox)
+    app.component('NeToggle', NeToggle)
   }
 }
 
@@ -40,7 +42,8 @@ export {
   NeSkeleton,
   NeTabs,
   NeComboBox,
-  NeCheckbox
+  NeCheckbox,
+  NeToggle
 }
 
 // utils lib
