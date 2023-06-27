@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
 
-type TitleLevel = 'h1' | 'h2' | 'h3'
+type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4'
 
 const props = defineProps({
   level: {
@@ -18,9 +18,10 @@ const props = defineProps({
 const baseStyle = 'font-medium leading-normal text-gray-900 dark:text-gray-100'
 
 const levelStyle: { [index: string]: string } = {
-  h1: 'text-2xl mb-4',
-  h2: 'text-lg mb-2',
-  h3: 'text-base mb-1.5'
+  h1: 'text-2xl mb-6',
+  h2: 'text-xl mb-4',
+  h3: 'text-lg mb-2',
+  h4: 'text-base mb-1.5'
 }
 
 const allStyles = computed(() => [baseStyle, levelStyle[props.level]].join(' '))

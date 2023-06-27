@@ -10,7 +10,7 @@ const meta = {
   component: NeTitle,
   tags: ['autodocs'],
   argTypes: {
-    level: { control: 'inline-radio', options: ['h1', 'h2', 'h3'] }
+    level: { control: 'inline-radio', options: ['h1', 'h2', 'h3', 'h4'] }
   },
   args: { level: 'h1' } // default values
 } satisfies Meta<typeof NeTitle>
@@ -56,6 +56,19 @@ export const Level3: Story = {
   }),
   args: {
     level: 'h3'
+  }
+}
+
+export const Level4: Story = {
+  render: (args) => ({
+    components: { NeTitle },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: {
+    level: 'h4'
   }
 }
 
