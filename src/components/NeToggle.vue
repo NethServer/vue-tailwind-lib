@@ -27,7 +27,7 @@ const model = computed({
 
 type ToggleSize = 'sm' | 'md' | 'lg'
 
-const defaultLabelClasses = 'w-fit relative inline-flex items-center'
+const defaultLabelClasses = 'w-fit relative flex items-center'
 const defaultToggleBackgroundClasses =
   'bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-offset-2 peer-focus:ring-primary-500 dark:peer-focus:ring-primary-200 rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:bg-primary-600 dark:peer-checked:bg-primary-500'
 const defaultToggleBallClasses = 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300'
