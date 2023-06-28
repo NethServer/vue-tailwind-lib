@@ -32,6 +32,13 @@ const props = defineProps({
   },
   invalidMessage: {
     type: String
+  },
+  optional: {
+    type: Boolean
+  },
+  optionalLabel: {
+    type: String,
+    default: 'Optional'
   }
 })
 
@@ -65,9 +72,11 @@ function emitModelValue(ev) {
     <label
       v-if="label"
       :for="componentId"
-      class="block text-sm font-medium leading-6 mb-2 text-gray-700 dark:text-gray-200"
-      >{{ label }}</label
+      class="text-sm font-medium leading-6 mb-2 flex justify-between items-end text-gray-700 dark:text-gray-200"
     >
+      <span>{{ label }}</span>
+      <span v-if="optional">{{ optionalLabel }}</span>
+    </label>
     <div class="relative rounded-md shadow-sm">
       <textarea
         :value="modelValue"

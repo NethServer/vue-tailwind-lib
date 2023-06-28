@@ -17,8 +17,10 @@ const meta = {
     placeholder: 'Placeholder',
     helperText: '',
     invalidMessage: '',
+    optional: false,
     disabled: false,
-    id: ''
+    id: '',
+    optionalLabel: 'Optional'
   }
 } satisfies Meta<typeof NeTextArea>
 
@@ -59,6 +61,19 @@ export const Invalid: Story = {
   }),
   args: {
     invalidMessage: 'Invalid input value'
+  }
+}
+
+export const Optional: Story = {
+  render: (args) => ({
+    components: { NeTextArea },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: {
+    optional: true
   }
 }
 

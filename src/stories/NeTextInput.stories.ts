@@ -16,11 +16,13 @@ const meta = {
     placeholder: 'Placeholder',
     helperText: '',
     invalidMessage: '',
+    optional: false,
     disabled: false,
     id: '',
     isPassword: false,
     showPasswordLabel: 'Show password',
-    hidePasswordLabel: 'Hide password'
+    hidePasswordLabel: 'Hide password',
+    optionalLabel: 'Optional'
   }
 } satisfies Meta<typeof NeTextInput>
 
