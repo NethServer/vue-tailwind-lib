@@ -12,7 +12,14 @@ import {
   NeCheckbox,
   NeToggle
 } from '@/components'
-import { setStringItem, getStringItem } from '@/lib/storage'
+import {
+  saveToStorage,
+  getJsonFromStorage,
+  getStringFromStorage,
+  deleteFromStorage,
+  savePreference,
+  getPreference
+} from '@/lib/storage'
 import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
 import { formatDateLoc, formatInTimeZoneLoc } from '@/lib/dateTime'
 import { NeComboboxOption } from './components/NeComboBox.vue'
@@ -54,7 +61,14 @@ export type { NeComboboxOption }
 export { sortByProperty, focusElement, getAxiosErrorMessage }
 
 // storage lib
-export { setStringItem, getStringItem }
+export {
+  saveToStorage,
+  getJsonFromStorage,
+  getStringFromStorage,
+  deleteFromStorage,
+  savePreference,
+  getPreference
+}
 
 // dateTime lib
 export { formatDateLoc, formatInTimeZoneLoc }
