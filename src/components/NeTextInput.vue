@@ -31,6 +31,9 @@ const props = defineProps({
   invalidMessage: {
     type: String
   },
+  optional: {
+    type: Boolean
+  },
   isPassword: {
     type: Boolean,
     default: false
@@ -42,6 +45,10 @@ const props = defineProps({
   hidePasswordLabel: {
     type: String,
     default: 'Hide password'
+  },
+  optionalLabel: {
+    type: String,
+    default: 'Optional'
   }
 })
 
@@ -94,9 +101,11 @@ function focus() {
     <label
       v-if="label"
       :for="componentId"
-      class="block text-sm font-medium leading-6 mb-2 text-gray-700 dark:text-gray-200"
-      >{{ label }}</label
+      class="text-sm font-medium leading-6 mb-2 flex justify-between items-end text-gray-700 dark:text-gray-200"
     >
+      <span>{{ label }}</span>
+      <span v-if="optional">{{ optionalLabel }}</span>
+    </label>
     <div class="relative rounded-md shadow-sm">
       <input
         :type="isPassword && !isPasswordVisible ? 'password' : 'text'"

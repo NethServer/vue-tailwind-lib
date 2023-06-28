@@ -64,6 +64,17 @@ export const Invalid: Story = {
   }
 }
 
+export const Optional: Story = {
+  render: (args) => ({
+    components: { NeTextInput },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: { optional: true }
+}
+
 export const Disabled: Story = {
   render: (args) => ({
     components: { NeTextInput },
