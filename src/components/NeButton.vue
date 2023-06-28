@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
+import NeSpinner, { SpinnerColor, SpinnerSize } from './NeSpinner.vue'
 
 type ButtonKind = 'primary' | 'secondary' | 'tertiary' | 'danger'
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -17,6 +18,14 @@ const props = defineProps({
   size: {
     type: String as PropType<ButtonSize>,
     default: 'md'
+  },
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  loadingPosition: {
+    type: String as PropType<'prefix' | 'suffix'>,
+    default: 'prefix'
   }
 })
 
@@ -41,11 +50,51 @@ const kindStyle: { [index: string]: string } = {
     'shadow-sm bg-rose-700 text-white hover:bg-rose-800 dark:bg-rose-600 dark:text-white dark:hover:bg-rose-500'
 }
 
+const spinnerColorStyle: { [index: string]: SpinnerColor } = {
+  primary: 'white',
+  secondary: 'primary',
+  tertiary: 'primary',
+  danger: 'white'
+}
+
+const spinnerSizeStyle: { [index: string]: SpinnerSize } = {
+  xs: '2.5',
+  sm: '3',
+  md: '4',
+  lg: '4',
+  xl: '5'
+}
+
 const allStyles = computed(() =>
   [baseStyle, kindStyle[props.kind], sizeStyle[props.size]].join(' ')
 )
+
+const loadingPrefix = computed(() => props.loading && props.loadingPosition === 'prefix')
+const loadingSuffix = computed(() => props.loading && props.loadingPosition === 'suffix')
 </script>
 
 <template>
-  <button :class="allStyles"><slot></slot></button>
+  <button :class="allStyles">
+    <div class="flex items-center">
+      <!-- prefix -->
+      <div v-if="$slots.prefix || loadingPrefix" class="mr-2">
+        <NeSpinner
+          :color="spinnerColorStyle[kind]"
+          :size="spinnerSizeStyle[size]"
+          v-if="loadingPrefix"
+        />
+        <slot name="prefix" v-else />
+      </div>
+      <slot />
+      <!-- suffix -->
+      <div v-if="$slots.suffix || loadingSuffix" class="ml-2">
+        <NeSpinner
+          :color="spinnerColorStyle[kind]"
+          :size="spinnerSizeStyle[size]"
+          v-if="loadingSuffix"
+        />
+        <slot name="suffix" v-else />
+      </div>
+    </div>
+  </button>
 </template>

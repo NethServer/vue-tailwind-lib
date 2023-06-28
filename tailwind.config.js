@@ -37,6 +37,9 @@ export default {
         transparent: 'transparent',
         current: 'currentColor',
         primary: cyanPalette
+      },
+      animation: {
+        'spin-fast': 'spin 0.5s linear infinite',
       }
     }
   },
