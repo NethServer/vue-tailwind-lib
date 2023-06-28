@@ -18,15 +18,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown as fasChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faCheck as fasCheck } from '@fortawesome/free-solid-svg-icons'
 
-export interface Option {
+export interface NeComboboxOption {
   id: string
   label: string
+  rawObj?: any
   disabled?: boolean
 }
 
 export interface Props {
   modelValue: string
-  options: Option[]
+  options: NeComboboxOption[]
   label?: string
   placeholder?: string
   helperText?: string
@@ -120,7 +121,7 @@ function getLimitedNumberOfOptions(options: any[]) {
   // add selected item if needed
   if (selectedOption.value) {
     const selectedOptionFound = options.find(
-      (option: Option) => option.id === selectedOption.value?.id
+      (option: NeComboboxOption) => option.id === selectedOption.value?.id
     )
 
     if (!selectedOptionFound) {

@@ -15,6 +15,7 @@ import {
 import { setStringItem, getStringItem } from '@/lib/storage'
 import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
 import { formatDateLoc, formatInTimeZoneLoc } from '@/lib/dateTime'
+import { NeComboboxOption } from './components/NeComboBox.vue'
 
 export default {
   install: (app: App) => {
@@ -45,6 +46,9 @@ export {
   NeCheckbox,
   NeToggle
 }
+
+// types
+export type { NeComboboxOption }
 
 // utils lib
 export { sortByProperty, focusElement, getAxiosErrorMessage }
