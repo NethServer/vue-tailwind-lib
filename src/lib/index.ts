@@ -1,3 +1,10 @@
 export { sortByProperty, focusElement, getAxiosErrorMessage } from './utils'
-export { setStringItem, getStringItem } from './storage'
+export {
+  saveToStorage,
+  getJsonFromStorage,
+  getStringFromStorage,
+  deleteFromStorage,
+  savePreference,
+  getPreference
+} from './storage'
 export { formatDateLoc, formatInTimeZoneLoc } from './dateTime'
