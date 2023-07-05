@@ -75,7 +75,7 @@ const loadingSuffix = computed(() => props.loading && props.loadingPosition === 
 
 <template>
   <button :class="allStyles">
-    <div class="flex items-center">
+    <div class="flex items-center justify-center">
       <!-- prefix -->
       <div v-if="$slots.prefix || loadingPrefix" class="mr-2">
         <NeSpinner
