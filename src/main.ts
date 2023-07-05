@@ -10,7 +10,8 @@ import {
   NeTabs,
   NeComboBox,
   NeCheckbox,
-  NeToggle
+  NeToggle,
+  NeSpinner
 } from '@/components'
 import {
   saveToStorage,
@@ -37,6 +38,7 @@ export default {
     app.component('NeComboBox', NeComboBox)
     app.component('NeCheckbox', NeCheckbox)
     app.component('NeToggle', NeToggle)
+    app.component('NeSpinner', NeSpinner)
   }
 }
 
@@ -51,7 +53,8 @@ export {
   NeTabs,
   NeComboBox,
   NeCheckbox,
-  NeToggle
+  NeToggle,
+  NeSpinner
 }
 
 // types
