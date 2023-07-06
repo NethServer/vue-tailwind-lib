@@ -60,7 +60,7 @@ export const Disabled: Story = {
 }
 
 const templateWithDescription =
-  '<NeCheckbox v-bind="args"><span>Labelll</span><template #description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</template></NeCheckbox>'
+  '<NeCheckbox v-bind="args"><span>Label</span><template #description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</template></NeCheckbox>'
 
 export const WithDescription: Story = {
   render: (args) => ({

@@ -26,7 +26,7 @@ const model = computed({
   <div class="relative flex items-start">
     <div class="flex h-6 items-center">
       <input
-        class="rounded h-5 w-5 sm:h-4 sm:w-4 text-primary-700 border-gray-300 focus:ring-primary-700 disabled:cursor-not-allowed disabled:opacity-50 dark:text-primary-500 dark:border-gray-500 dark:focus:ring-primary-500"
+        class="rounded h-5 w-5 sm:h-4 sm:w-4 focus:ring-2 text-primary-700 border-gray-300 focus:ring-primary-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-primary-500 dark:border-gray-500 dark:focus:ring-primary-300"
         type="checkbox"
         :id="componentId"
         :aria-describedby="componentId + '-description'"

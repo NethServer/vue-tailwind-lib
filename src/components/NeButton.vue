@@ -30,7 +30,7 @@ const props = defineProps({
 })
 
 const baseStyle =
-  'font-semibold disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-700'
+  'font-semibold disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 focus:ring-2 focus:outline-none focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-primary-300'
 
 const sizeStyle: { [index: string]: string } = {
   xs: 'rounded px-2 py-1 text-xs',
@@ -43,7 +43,7 @@ const kindStyle: { [index: string]: string } = {
   primary:
     'shadow-sm bg-primary-700 text-white hover:bg-primary-800 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-300',
   secondary:
-    'shadow-sm ring-1 ring-inset text-primary-700 ring-gray-300 hover:bg-gray-200/70 hover:text-primary-800 dark:text-primary-500 dark:ring-gray-500 dark:hover:bg-gray-600/30 dark:hover:text-primary-500',
+    'shadow-sm ring-1 text-primary-700 ring-gray-300 hover:bg-gray-200/70 hover:text-primary-800 dark:text-primary-500 dark:ring-gray-500 dark:hover:bg-gray-600/30 dark:hover:text-primary-500',
   tertiary:
     'text-primary-700 hover:text-primary-800 hover:bg-gray-200/70 dark:text-primary-500 dark:hover:text-primary-500 dark:hover:bg-gray-600/30',
   danger:

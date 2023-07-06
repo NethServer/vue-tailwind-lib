@@ -65,7 +65,7 @@ const selectedOption = ref(null) as any
 const textInputRef = ref()
 
 const inputValidStyle =
-  'ring-gray-300 dark:ring-gray-600 focus:ring-primary-600 dark:focus:ring-primary-300'
+  'ring-gray-300 dark:ring-gray-600 focus:ring-primary-500 dark:focus:ring-primary-300'
 
 const inputInvalidStyle = 'ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
 

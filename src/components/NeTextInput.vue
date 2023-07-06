@@ -67,7 +67,7 @@ library.add(fasEyeSlash)
 const inputBaseStyle =
   'block w-full rounded-md border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 mt-0 disabled:cursor-not-allowed disabled:opacity-50 text-gray-900 bg-white placeholder:text-gray-400 transition-colors duration-200 dark:text-gray-50 dark:bg-gray-950 dark:placeholder:text-gray-500'
 const inputValidStyle =
-  'ring-gray-300 focus:ring-primary-600 dark:ring-gray-600 dark:focus:ring-primary-300'
+  'ring-gray-300 focus:ring-primary-500 dark:ring-gray-600 dark:focus:ring-primary-300'
 const inputInvalidStyle =
   'pr-10 ring-rose-300 focus:ring-rose-500 ring-rose-700 focus:ring-rose-500'
 
