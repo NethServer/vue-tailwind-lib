@@ -180,7 +180,7 @@ function focus() {
 
       <ComboboxOptions
         v-if="filteredOptions.length > 0"
-        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-opacity-5 focus:outline-none sm:text-sm bg-white ring-gray-900/5 dark:bg-gray-950 dark:ring-gray-100/5"
+        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-lg ring-1 ring-opacity-5 focus:outline-none sm:text-sm bg-white ring-gray-900/5 dark:bg-gray-900 dark:ring-gray-100/5"
       >
         <ComboboxOption
           v-for="option in filteredOptions"
@@ -194,7 +194,7 @@ function focus() {
             :class="[
               'relative cursor-default select-none py-2 pl-3 pr-9',
               active
-                ? 'cursor-pointer bg-primary-600 text-white dark:bg-primary-500 dark:text-gray-950'
+                ? 'cursor-pointer bg-gray-200 dark:bg-gray-700 text-gray-950 dark:text-gray-100'
                 : option.disabled
                 ? 'cursor-not-allowed text-gray-500 dark:text-gray-500'
                 : 'text-gray-900 dark:text-gray-100'
@@ -207,8 +207,7 @@ function focus() {
             <span
               v-if="selected"
               :class="[
-                'absolute inset-y-0 right-0 flex items-center pr-4',
-                active ? 'text-white dark:text-gray-950' : 'text-primary-600 dark:text-primary-500'
+                'absolute inset-y-0 right-0 flex items-center pr-4 text-gray-900 dark:text-gray-100'
               ]"
             >
               <font-awesome-icon
