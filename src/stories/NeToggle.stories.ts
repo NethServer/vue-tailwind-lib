@@ -10,7 +10,7 @@ const meta = {
   component: NeToggle,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] }
+    size: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'xl'] }
   },
   // default values
   args: {
@@ -35,28 +35,6 @@ export const Default: Story = {
     template: template
   }),
   args: {}
-}
-
-export const Small: Story = {
-  render: (args) => ({
-    components: { NeToggle },
-    setup() {
-      return { args }
-    },
-    template: template
-  }),
-  args: { size: 'sm' }
-}
-
-export const Large: Story = {
-  render: (args) => ({
-    components: { NeToggle },
-    setup() {
-      return { args }
-    },
-    template: template
-  }),
-  args: { size: 'lg' }
 }
 
 export const Disabled: Story = {
