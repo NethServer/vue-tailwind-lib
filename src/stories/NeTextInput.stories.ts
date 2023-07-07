@@ -98,3 +98,16 @@ export const Password: Story = {
   }),
   args: { isPassword: true, label: 'Enter password', placeholder: '' }
 }
+
+const typeNumberTemplate = '<NeTextInput v-bind="args" type="number" class="max-w-md" />'
+
+export const TypeNumber: Story = {
+  render: (args) => ({
+    components: { NeTextInput },
+    setup() {
+      return { args }
+    },
+    template: typeNumberTemplate
+  }),
+  args: {}
+}

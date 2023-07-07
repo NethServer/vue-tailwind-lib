@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, useAttrs } from 'vue'
 import { uid } from 'uid/single'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -59,6 +59,10 @@ defineExpose({
   focus
 })
 
+defineOptions({
+  inheritAttrs: false
+})
+
 // add fontawesome icons
 library.add(fasCircleExclamation)
 library.add(fasEye)
@@ -83,6 +87,28 @@ const inputStyles = computed(() =>
 
 const inputRef = ref()
 
+const attrs = useAttrs()
+
+const rootAttrs = computed(() => {
+  const allowed = ['class']
+  return Object.keys(attrs)
+    .filter((key) => allowed.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = attrs[key]
+      return obj
+    }, {})
+})
+
+const inputAttrs = computed(() => {
+  const notAllowed = ['class']
+  return Object.keys(attrs)
+    .filter((key) => !notAllowed.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = attrs[key]
+      return obj
+    }, {})
+})
+
 function emitModelValue(ev) {
   emit('update:modelValue', ev.target.value)
 }
@@ -97,7 +123,7 @@ function focus() {
 </script>
 
 <template>
-  <div class="bg-inherit border-inherit border-0">
+  <div v-bind="rootAttrs">
     <label
       v-if="label"
       :for="componentId"
@@ -115,7 +141,7 @@ function focus() {
         :class="inputStyles"
         :placeholder="placeholder"
         :aria-describedby="componentId + '-description'"
-        v-bind="$attrs"
+        v-bind="inputAttrs"
         ref="inputRef"
       />
       <!-- show/hide password toggle -->
