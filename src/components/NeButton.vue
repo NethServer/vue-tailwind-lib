@@ -7,8 +7,8 @@
 import { computed, type PropType } from 'vue'
 import NeSpinner, { SpinnerColor, SpinnerSize } from './NeSpinner.vue'
 
-type ButtonKind = 'primary' | 'secondary' | 'tertiary' | 'danger'
-type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type ButtonKind = 'primary' | 'secondary' | 'tertiary' | 'danger'
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 const props = defineProps({
   kind: {
