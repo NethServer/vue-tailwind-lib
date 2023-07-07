@@ -12,7 +12,8 @@ import {
   NeCheckbox,
   NeToggle,
   NeSpinner,
-  NeModal
+  NeModal,
+  NeExpandable
 } from '@/components'
 import {
   saveToStorage,
@@ -41,6 +42,7 @@ export default {
     app.component('NeToggle', NeToggle)
     app.component('NeSpinner', NeSpinner)
     app.component('NeModal', NeModal)
+    app.component('NeExpandable', NeExpandable)
   }
 }
 
@@ -57,7 +59,8 @@ export {
   NeCheckbox,
   NeToggle,
   NeSpinner,
-  NeModal
+  NeModal,
+  NeExpandable
 }
 
 // types
