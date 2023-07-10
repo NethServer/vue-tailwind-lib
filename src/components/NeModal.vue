@@ -139,7 +139,7 @@ function onSecondaryClick() {
               <div class="sm:flex sm:items-start">
                 <template v-if="kind !== 'neutral'">
                   <div
-                    :class="`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10 ${iconBackground[kind]}`"
+                    :class="`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10 ${iconBackground[kind]} mb-3 sm:mb-0 sm:mr-4`"
                   >
                     <font-awesome-icon
                       :icon="['fas', iconName[kind]]"
@@ -148,14 +148,14 @@ function onSecondaryClick() {
                     />
                   </div>
                 </template>
-                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <div class="text-center sm:text-left">
                   <DialogTitle
                     v-if="title"
                     as="h3"
-                    class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-50"
+                    class="mb-2 text-base font-semibold leading-6 text-gray-900 dark:text-gray-50"
                     >{{ title }}</DialogTitle
                   >
-                  <div class="mt-2">
+                  <div>
                     <p class="text-sm text-gray-700 dark:text-gray-200">
                       <slot />
                     </p>
