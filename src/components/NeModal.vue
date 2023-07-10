@@ -148,11 +148,11 @@ function onSecondaryClick() {
                     />
                   </div>
                 </template>
-                <div class="text-center sm:text-left">
+                <div class="grow text-center sm:text-left">
                   <DialogTitle
                     v-if="title"
                     as="h3"
-                    class="mb-2 text-base font-semibold leading-6 text-gray-900 dark:text-gray-50"
+                    class="mb-4 text-base font-semibold leading-6 text-gray-900 dark:text-gray-50"
                     >{{ title }}</DialogTitle
                   >
                   <div>
