@@ -35,7 +35,7 @@ function toggleExpanded() {
   <div>
     <button
       @click="toggleExpanded"
-      class="text-sm rounded w-full flex items-center justify-between px-2 py-1 border-b border-gray-300 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-50"
+      class="text-sm font-medium rounded w-full flex items-center justify-between px-2 py-1 border-b border-gray-300 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-50"
     >
       <span>{{ title }}</span>
       <font-awesome-icon
@@ -45,7 +45,7 @@ function toggleExpanded() {
       />
     </button>
     <Transition name="slide-down">
-      <div v-show="expanded" class="text-sm px-2 py-1 text-gray-700 dark:text-gray-200">
+      <div v-show="expanded" class="text-sm text-gray-700 dark:text-gray-200">
         <slot></slot>
       </div>
     </Transition>
