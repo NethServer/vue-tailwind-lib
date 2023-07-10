@@ -129,7 +129,7 @@ function onSecondaryClick() {
               <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
                 <button
                   type="button"
-                  class="rounded-md leading-none focus:outline-none focus:ring-2 focus:ring-offset-2 text-gray-600 hover:text-gray-700 focus:ring-primary-500 dark:text-gray-300 dark:hover:text-gray-200 dark:focus:ring-primary-300"
+                  class="rounded-md leading-none focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-gray-600 hover:text-gray-700 focus:ring-primary-500 dark:text-gray-300 dark:hover:text-gray-200 dark:focus:ring-primary-300"
                   @click="onClose"
                 >
                   <span class="sr-only">{{ closeAriaLabel }}</span>
