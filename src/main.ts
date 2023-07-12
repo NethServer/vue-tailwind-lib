@@ -23,7 +23,13 @@ import {
   savePreference,
   getPreference
 } from '@/lib/storage'
-import { sortByProperty, focusElement, getAxiosErrorMessage } from '@/lib/utils'
+import {
+  sortByProperty,
+  focusElement,
+  getAxiosErrorMessage,
+  byteFormat1000,
+  byteFormat1024
+} from '@/lib/utils'
 import { formatDateLoc, formatInTimeZoneLoc } from '@/lib/dateTime'
 import { NeComboboxOption } from './components/NeComboBox.vue'
 
@@ -67,7 +73,7 @@ export {
 export type { NeComboboxOption }
 
 // utils lib
-export { sortByProperty, focusElement, getAxiosErrorMessage }
+export { sortByProperty, focusElement, getAxiosErrorMessage, byteFormat1024, byteFormat1000 }
 
 // storage lib
 export {

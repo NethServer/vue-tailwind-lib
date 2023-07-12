@@ -1,4 +1,10 @@
-export { sortByProperty, focusElement, getAxiosErrorMessage } from './utils'
+export {
+  sortByProperty,
+  focusElement,
+  getAxiosErrorMessage,
+  byteFormat1024,
+  byteFormat1000
+} from './utils'
 export {
   saveToStorage,
   getJsonFromStorage,
