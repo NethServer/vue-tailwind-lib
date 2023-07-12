@@ -9,18 +9,26 @@ const meta = {
   title: 'NeModal',
   component: NeModal,
   argTypes: {
-    kind: { control: 'inline-radio', options: ['neutral', 'info', 'warning', 'error', 'success'] }
+    kind: { control: 'inline-radio', options: ['neutral', 'info', 'warning', 'error', 'success'] },
+    size: { control: 'inline-radio', options: ['md', 'lg', 'xl'] },
+    primaryButtonKind: { control: 'inline-radio', options: ['primary', 'danger'] },
+    secondaryButtonKind: {
+      control: 'inline-radio',
+      options: ['primary', 'secondary', 'tertiary', 'danger']
+    }
   },
   args: {
     visible: true,
     title: 'Title',
     kind: 'neutral',
+    size: 'md',
     primaryLabel: 'Primary',
     secondaryLabel: '',
     cancelLabel: 'Cancel',
     primaryButtonKind: 'primary',
     primaryButtonDisabled: false,
     primaryButtonLoading: false,
+    secondaryButtonKind: 'secondary',
     secondaryButtonDisabled: false,
     secondaryButtonLoading: false,
     closeAriaLabel: 'Close'
@@ -151,5 +159,18 @@ export const PrimaryLoading: Story = {
     primaryLabel: 'Save',
     primaryButtonLoading: true,
     primaryButtonDisabled: true
+  }
+}
+
+export const Large: Story = {
+  render: (args) => ({
+    components: { NeModal },
+    setup() {
+      return { args }
+    },
+    template: template
+  }),
+  args: {
+    size: 'lg'
   }
 }

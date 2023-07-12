@@ -12,21 +12,24 @@ import { faCircleCheck as fasCircleCheck } from '@fortawesome/free-solid-svg-ico
 import { faCircleXmark as fasCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import NeButton from './NeButton.vue'
+import NeButton, { ButtonKind } from './NeButton.vue'
 
 type ModalKind = 'neutral' | 'info' | 'warning' | 'error' | 'success'
 type PrimaryButtonKind = 'primary' | 'danger'
+type ModalSize = 'md' | 'lg' | 'xl'
 
 interface ModalProps {
   visible: boolean
   title?: string
   kind?: ModalKind
+  size?: ModalSize
   primaryLabel: string
   secondaryLabel?: string
   cancelLabel?: string
   primaryButtonKind?: PrimaryButtonKind
   primaryButtonDisabled?: boolean
   primaryButtonLoading?: boolean
+  secondaryButtonKind?: ButtonKind
   secondaryButtonDisabled?: boolean
   secondaryButtonLoading?: boolean
   closeAriaLabel?: string
@@ -36,12 +39,14 @@ withDefaults(defineProps<ModalProps>(), {
   visible: false,
   title: '',
   kind: 'neutral',
+  size: 'md',
   primaryLabel: '',
   secondaryLabel: '',
   cancelLabel: 'Cancel',
   primaryButtonKind: 'primary',
   primaryButtonDisabled: false,
   primaryButtonLoading: false,
+  secondaryButtonKind: 'secondary',
   secondaryButtonDisabled: false,
   secondaryButtonLoading: false,
   closeAriaLabel: 'Close'
@@ -64,7 +69,7 @@ const iconName: Record<ModalKind, string> = {
   success: 'circle-check'
 }
 
-const iconBackground: Record<ModalKind, string> = {
+const iconBackgroundStyle: Record<ModalKind, string> = {
   neutral: '',
   info: 'bg-indigo-100 dark:bg-indigo-800',
   warning: 'bg-amber-100 dark:bg-amber-800',
@@ -72,12 +77,18 @@ const iconBackground: Record<ModalKind, string> = {
   success: 'bg-green-100 dark:bg-green-800'
 }
 
-const iconForeground: Record<ModalKind, string> = {
+const iconForegroundStyle: Record<ModalKind, string> = {
   neutral: '',
   info: 'text-indigo-700 dark:text-indigo-50',
   warning: 'text-amber-700 dark:text-amber-50',
   error: 'text-rose-700 dark:text-rose-50',
   success: 'text-green-700 dark:text-green-50'
+}
+
+const sizeStyle: Record<ModalSize, string> = {
+  md: 'sm:max-w-lg',
+  lg: 'sm:max-w-2xl',
+  xl: 'sm:max-w-4xl'
 }
 
 function onClose() {
@@ -124,12 +135,12 @@ function onSecondaryClick() {
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel
-              class="relative transform overflow-hidden rounded-lg px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6 bg-white dark:bg-gray-900"
+              :class="`relative transform overflow-hidden rounded-lg px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full ${sizeStyle[size]} sm:p-6 bg-white dark:bg-gray-900`"
             >
               <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
                 <button
                   type="button"
-                  class="rounded-md leading-none focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-gray-600 hover:text-gray-700 focus:ring-primary-500 dark:text-gray-300 dark:hover:text-gray-200 dark:focus:ring-primary-300"
+                  class="rounded-md leading-none focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors text-gray-600 hover:text-gray-700 focus:ring-primary-500 focus:ring-offset-white dark:text-gray-300 dark:hover:text-gray-200 dark:focus:ring-primary-300 dark:focus:ring-offset-gray-900"
                   @click="onClose"
                 >
                   <span class="sr-only">{{ closeAriaLabel }}</span>
@@ -139,12 +150,12 @@ function onSecondaryClick() {
               <div class="sm:flex sm:items-start">
                 <template v-if="kind !== 'neutral'">
                   <div
-                    :class="`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10 ${iconBackground[kind]} mb-3 sm:mb-0 sm:mr-4`"
+                    :class="`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10 ${iconBackgroundStyle[kind]} mb-3 sm:mb-0 sm:mr-4`"
                   >
                     <font-awesome-icon
                       :icon="['fas', iconName[kind]]"
                       aria-hidden="true"
-                      :class="`h-5 w-5 ${iconForeground[kind]}`"
+                      :class="`h-5 w-5 ${iconForegroundStyle[kind]}`"
                     />
                   </div>
                 </template>
@@ -173,7 +184,7 @@ function onSecondaryClick() {
                 >
                 <NeButton
                   v-if="secondaryLabel"
-                  kind="secondary"
+                  :kind="secondaryButtonKind"
                   @click="onSecondaryClick"
                   :disabled="secondaryButtonDisabled"
                   :loading="secondaryButtonLoading"
