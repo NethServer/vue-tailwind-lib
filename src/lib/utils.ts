@@ -59,3 +59,49 @@ export const getAxiosErrorMessage = (error: any) => {
   }
   return 'error.generic_error'
 }
+
+/**
+ * Format a byte size according to the International Electrotechnical Commission (IEC), using 1024 as multiple factor
+ *
+ * @param byteSize the number of bytes to format
+ * @returns a string representing the byte size with the appropriate unit
+ */
+export const byteFormat1024 = (byteSize: number) => {
+  switch (true) {
+    case !byteSize || isNaN(byteSize):
+      return '-'
+    case byteSize >= 0 && byteSize < 1024:
+      return byteSize + ' B'
+    case byteSize >= 1024 && byteSize < Math.pow(1024, 2):
+      return Math.round((byteSize / 1024) * 100) / 100 + ' KiB'
+    case byteSize >= Math.pow(1024, 2) && byteSize < Math.pow(1024, 3):
+      return Math.round((byteSize / Math.pow(1024, 2)) * 100) / 100 + ' MiB'
+    case byteSize >= Math.pow(1024, 3) && byteSize < Math.pow(1024, 4):
+      return Math.round((byteSize / Math.pow(1024, 3)) * 100) / 100 + ' GiB'
+    default:
+      return Math.round((byteSize / Math.pow(1024, 4)) * 100) / 100 + ' TiB'
+  }
+}
+
+/**
+ * Format a byte size according to the International System of Units (SI), using 1000 as multiple factor
+ *
+ * @param byteSize the number of bytes to format
+ * @returns a string representing the byte size with the appropriate unit
+ */
+export const byteFormat1000 = (byteSize: number) => {
+  switch (true) {
+    case !byteSize || isNaN(byteSize):
+      return '-'
+    case byteSize >= 0 && byteSize < 1000:
+      return byteSize + ' B'
+    case byteSize >= 1000 && byteSize < Math.pow(1000, 2):
+      return Math.round((byteSize / 1000) * 100) / 100 + ' kB'
+    case byteSize >= Math.pow(1000, 2) && byteSize < Math.pow(1000, 3):
+      return Math.round((byteSize / Math.pow(1000, 2)) * 100) / 100 + ' MB'
+    case byteSize >= Math.pow(1000, 3) && byteSize < Math.pow(1000, 4):
+      return Math.round((byteSize / Math.pow(1000, 3)) * 100) / 100 + ' GB'
+    default:
+      return Math.round((byteSize / Math.pow(1000, 4)) * 100) / 100 + ' TB'
+  }
+}
