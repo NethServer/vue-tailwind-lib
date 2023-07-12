@@ -34,7 +34,7 @@ type ToggleSize = 'sm' | 'md' | 'lg' | 'xl'
 
 const defaultLabelClasses = 'w-fit relative flex items-center'
 const defaultToggleBackgroundClasses =
-  'bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-primary-500 dark:peer-focus:ring-primary-300 rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:bg-primary-600 dark:peer-checked:bg-primary-500'
+  'bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-primary-500 dark:peer-focus:ring-primary-300 rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:bg-primary-600 dark:peer-checked:bg-primary-500 peer-focus:ring-offset-white dark:peer-focus:ring-offset-primary-950'
 const defaultToggleBallClasses = 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300'
 const toggleSizeClasses: Record<ToggleSize, string> = {
   xl: 'w-14 h-7 after:top-0.5 after:left-[4px] after:h-6 after:w-6',

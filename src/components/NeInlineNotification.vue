@@ -109,7 +109,7 @@ const closeIconKindStyle: { [index: string]: string } = {
         <div class="-mx-1.5 -my-1.5">
           <button
             type="button"
-            :class="`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2  ${closeIconKindStyle[props.kind as string]}`"
+            :class="`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${closeIconKindStyle[props.kind as string]}`"
           >
             <span class="sr-only">{{ props.closeAriaLabel }}</span>
             <font-awesome-icon :icon="['fas', 'xmark']" class="h-4 w-4" aria-hidden="true" />
