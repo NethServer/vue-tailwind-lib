@@ -176,6 +176,7 @@ function onSecondaryClick() {
               <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                 <NeButton
                   :kind="primaryButtonKind"
+                  size="lg"
                   @click="onPrimaryClick"
                   :disabled="primaryButtonDisabled"
                   :loading="primaryButtonLoading"
@@ -185,6 +186,7 @@ function onSecondaryClick() {
                 <NeButton
                   v-if="secondaryLabel"
                   :kind="secondaryButtonKind"
+                  size="lg"
                   @click="onSecondaryClick"
                   :disabled="secondaryButtonDisabled"
                   :loading="secondaryButtonLoading"
@@ -194,6 +196,7 @@ function onSecondaryClick() {
                 <NeButton
                   v-if="cancelLabel"
                   kind="tertiary"
+                  size="lg"
                   @click="onClose"
                   class="mt-3 sm:mt-0 w-full sm:w-auto"
                   >{{ cancelLabel }}</NeButton
